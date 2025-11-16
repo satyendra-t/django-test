@@ -14,3 +14,8 @@ class ProductModelTest(TestCase):
         self.product.stock_count=0
         self.assertFalse(self.product.in_stock)
 
+    def test_get_discounted_price(self):
+        self.assertEqual(self.product.get_discounted_price(10), 90.00)
+        self.assertEqual(self.product.get_discounted_price(50), 50.00)
+        self.assertEqual(self.product.get_discounted_price(0), 100.00)
+
