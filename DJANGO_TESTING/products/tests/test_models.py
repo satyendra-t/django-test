@@ -19,3 +19,7 @@ class ProductModelTest(TestCase):
         self.assertEqual(self.product.get_discounted_price(50), 50.00)
         self.assertEqual(self.product.get_discounted_price(0), 100.00)
 
+    def test_negative_price_validation(self):
+        self.product.price=-10
+        with self.assertRaises(ValidationError):
+            self.product.clean()
